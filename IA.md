@@ -3,11 +3,16 @@
 ## 1. Introducció
 
 Aprenentatge automàtic (machine learning)
-* Idea central d'"aprendre":
-    - Ajustar de manera progressiva un conjunt de paràmetres interns (anomenats pesos, com w₁ i w₂) 
-    - Utilitzant les dades d'entrada disponibles (les variables de característiques, x₁ i x₂).
 
-L'objectiu final és aconseguir que la formulació matemàtica produeixi una predicció tan propera com sigui possible al resultat real conegut (y). A cada intent o iteració, el model avalua la magnitud de l'error comès i utilitza aquesta informació per corregir la direcció dels pesos.
+Idea central d'"aprendre"
+
+* Ajustar de manera progressiva un conjunt de paràmetres interns (anomenats pesos, com w₁ i w₂) 
+* Utilitzant dades d'entrada disponibles (variables característiques, x₁ i x₂).
+
+Objectiu final:
+
+- Aconseguir que la formulació matemàtica produeixi una predicció tan propera com sigui possible al resultat real conegut (y). 
+- A cada intent o iteració, el model avalua la magnitud de l'error comès i utilitza aquesta informació per corregir la direcció dels pesos.
 ## 2. Plantejament de l'exercici: endevinar el preu d'una pizza
 Imaginem que volem construir un model matemàtic senzill per predir el preu d'una pizza en funció de les seves característiques principals.
 
@@ -103,22 +108,33 @@ A continuació es resumeix l'evolució del model al llarg de les diferents prove
 | Ronda 3 | 7 | 3 | 0, 0, -2 | 2 € |
 | Ronda 4 | 6,5 | 2,5 | +1, +1, 0 | 2 € |
 
-Lliçons clau de la comparativa
+### Lliçons clau de la comparativa
+
 Avaluació de l'error global: Atenent únicament a l'error absolut total, la Ronda 2 (1 € d'error acomulat) és superior a la Ronda 4 (2 €). En un entorn d'entrenament real, l'algoritme detectaria que la modificació realitzada a la Ronda 4 ha empitjorat el resultat global i reduiria el pas d'ajust (per exemple, provant w₁ = 7, w₂ = 2,2).
-Distribució dels errors i funció de pèrdua: Observant els errors individuals, la Ronda 4 aconsegueix evitar desviacions grans com la de 2 € de la Ronda 3, garantint que cap cas individual s'equivoqui de més d'1 €. La selecció de la funció de pèrdua (loss function) determina si el model prefereix penalitzar més severament els errors puntuals grans o la suma total de petits errors.
+
+Distribució dels errors i funció de pèrdua: 
+
+* Observant errors individuals
+  - Ronda 4 aconsegueix evitar desviacions grans com la de 2 € de la Ronda 3, 
+  - Garantint que cap cas individual s'equivoqui de més d'1 €. 
+* La selecció de la funció de pèrdua (loss function) 
+  - determina si el model prefereix 
+  - penalitzar més severament els errors puntuals grans 
+  - o la suma total de petits errors.
 
 ## 6. Millora del model: afegir el biaix (bias) per aconseguir error zero
 
 Per què no encaixava perfectament abans?
 
 - Fins ara, el model no incloïa un terme independent. 
-- Això obligava la fórmula a assumir que si una pizza tenia mida 0 i 0 ingredients (x₁ = 0, x₂ = 0), el seu preu havia de ser exactament 0 €.
+- Obligava la fórmula a assumir que si una pizza tenia mida 0 i 0 ingredients (x₁ = 0, x₂ = 0), -> preu havia de ser 0 €.
 
-* En aprenentatge automàtic, aquest terme addicional s'anomena *biaix* (bias, b o w₀) 
-* Representa el cost fix de base (massa, ús del forn, servei, caixa, etc.), independentment de les caràcterístiques variables.
+* En aprenentatge automàtic
+  - Aquest terme addicional s'anomena *biaix* (bias, b o w₀) 
+  - Representa el cost fix de base (massa, ús del forn, servei, caixa, etc.), 
+  - Independentment de les caràcterístiques variables.
 
 Nova fórmula del model: Predicció (ŷ) = w₁ · x₁ + w₂ · x₂ + b
-
 
 ### Ronda 5 — Provem d'afegir un biaix inicial (w₁ = 6, w₂ = 2, b = 1)
 
@@ -157,6 +173,7 @@ Taula comparativa de les rondes amb biaix
 | Ronda 6 | 6 | 2 | 2 | 0, 0, 0 | 0 € |
 
 ### 7. Deducció analítica dels paràmetres
+
 Podem deduir l'estructura exacta del sistema comparant els casos entre si:
 
 Càlcul de w₂ (pes dels extres): 
