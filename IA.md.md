@@ -25,7 +25,7 @@ Variables d'entrada (característiques):
 
 Fórmula inicial del model (sense terme independent o biaix):
 
-- $\text{Predicció } (\hat{y}) = w_1 \cdot x_1 + w_2 \cdot x_2$
+$$\text{Predicció } (\hat{y}) = w_1 \cdot x_1 + w_2 \cdot x_2$$
 
 Trobar els millors valors numèrics per als pesos $w_1$ i $w_2$ mitjançant un procés intuïtiu de prova i error, mesurant la desviació respecte a les dades reals.
 
@@ -51,17 +51,17 @@ Proposem una primera combinació de pesos de forma intuïtiva per veure com resp
 
 Anem a pintar-ho com a vectors:
 
-- **Cas A:**
+**Cas A:**
 
-  $$\hat{y}_A = \begin{pmatrix} 5 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 1 \\ 1 \end{pmatrix} = 7\text{ €} \quad \longrightarrow \quad e_A = 10 - 7 = +3\text{ €}$$
+$$\hat{y}_A = \begin{pmatrix} 5 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 1 \\ 1 \end{pmatrix} = 7\text{ €} \quad \longrightarrow \quad e_A = 10 - 7 = +3\text{ €}$$
 
-- **Cas B:**
+**Cas B:**
 
-  $$\hat{y}_B = \begin{pmatrix} 5 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ 0 \end{pmatrix} = 10\text{ €} \quad \longrightarrow \quad e_B = 14 - 10 = +4\text{ €}$$
+$$\hat{y}_B = \begin{pmatrix} 5 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ 0 \end{pmatrix} = 10\text{ €} \quad \longrightarrow \quad e_B = 14 - 10 = +4\text{ €}$$
 
-- **Cas C:**
+**Cas C:**
 
-  $$\hat{y}_C = \begin{pmatrix} 5 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ 2 \end{pmatrix} = 14\text{ €} \quad \longrightarrow \quad e_C = 18 - 14 = +4\text{ €}$$
+$$\hat{y}_C = \begin{pmatrix} 5 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ 2 \end{pmatrix} = 14\text{ €} \quad \longrightarrow \quad e_C = 18 - 14 = +4\text{ €}$$
 
 **Observació:** En tots els casos la predicció queda per sota del valor real. Per tant, el model està infradimensionat i cal incrementar els valors de $w_1$ i/o $w_2$.
 
@@ -69,33 +69,33 @@ Anem a pintar-ho com a vectors:
 
 Decidim augmentar el pes del diàmetre ($w_1$), ja que sembla l'element que més influeix en el cost final:
 
-- **Cas A:**
+**Cas A:**
 
-  $$\hat{y}_A = \begin{pmatrix} 7 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 1 \\ 1 \end{pmatrix} = 9\text{ €} \quad \longrightarrow \quad e_A = 10 - 9 = +1\text{ €}$$
+$$\hat{y}_A = \begin{pmatrix} 7 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 1 \\ 1 \end{pmatrix} = 9\text{ €} \quad \longrightarrow \quad e_A = 10 - 9 = +1\text{ €}$$
 
-- **Cas B:**
+**Cas B:**
 
-  $$\hat{y}_B = \begin{pmatrix} 7 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ 0 \end{pmatrix} = 14\text{ €} \quad \longrightarrow \quad e_B = 14 - 14 = 0\text{ € — clavat!}$$
+$$\hat{y}_B = \begin{pmatrix} 7 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ 0 \end{pmatrix} = 14\text{ €} \quad \longrightarrow \quad e_B = 14 - 14 = 0\text{ € — clavat!}$$
 
-- **Cas C:**
+**Cas C:**
 
-  $$\hat{y}_C = \begin{pmatrix} 7 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ 2 \end{pmatrix} = 18\text{ €} \quad \longrightarrow \quad e_C = 18 - 18 = 0\text{ € — clavat!}$$
+$$\hat{y}_C = \begin{pmatrix} 7 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ 2 \end{pmatrix} = 18\text{ €} \quad \longrightarrow \quad e_C = 18 - 18 = 0\text{ € — clavat!}$$
 
 ### Ronda 3 — Polim el detall ($w_1 = 7$, $w_2 = 3$)
 
 Intentem eliminar l'error restant del Cas A augmentant lleugerament el pes dels ingredients extra ($w_2$):
 
-- **Cas A:**
+**Cas A:**
 
-  $$\hat{y}_A = \begin{pmatrix} 7 \\ 3 \end{pmatrix} \cdot \begin{pmatrix} 1 \\ 1 \end{pmatrix} = 10\text{ €} \quad \longrightarrow \quad e_A = 10 - 10 = 0\text{ €}$$
+$$\hat{y}_A = \begin{pmatrix} 7 \\ 3 \end{pmatrix} \cdot \begin{pmatrix} 1 \\ 1 \end{pmatrix} = 10\text{ €} \quad \longrightarrow \quad e_A = 10 - 10 = 0\text{ €}$$
 
-- **Cas B:**
+**Cas B:**
 
-  $$\hat{y}_B = \begin{pmatrix} 7 \\ 3 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ 0 \end{pmatrix} = 14\text{ €} \quad \longrightarrow \quad e_B = 14 - 14 = 0\text{ €}$$
+$$\hat{y}_B = \begin{pmatrix} 7 \\ 3 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ 0 \end{pmatrix} = 14\text{ €} \quad \longrightarrow \quad e_B = 14 - 14 = 0\text{ €}$$
 
-- **Cas C:**
+**Cas C:**
 
-  $$\hat{y}_C = \begin{pmatrix} 7 \\ 3 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ 2 \end{pmatrix} = 20\text{ €} \quad \longrightarrow \quad e_C = 18 - 20 = -2\text{ €}$$
+$$\hat{y}_C = \begin{pmatrix} 7 \\ 3 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ 2 \end{pmatrix} = 20\text{ €} \quad \longrightarrow \quad e_C = 18 - 20 = -2\text{ €}$$
 
 **Observació:** En corregir el Cas A, hem provocat que el Cas C es passi de frenada. Això mostra que no sempre és possible aconseguir un error zero absolut a totes les dades utilitzant una fórmula lineal sense terme independent; cal cercar un equilibri que minimitzi l'error global.
 
@@ -103,17 +103,17 @@ Intentem eliminar l'error restant del Cas A augmentant lleugerament el pes dels 
 
 Apliquem el concepte de taxa d'aprenentatge (*learning rate*), fent modificacions més petites i prudents en els pesos (de $0{,}5$ en $0{,}5$) per equilibrar el comportament:
 
-- **Cas A:**
+**Cas A:**
 
-  $$\hat{y}_A = \begin{pmatrix} 6.5 \\ 2.5 \end{pmatrix} \cdot \begin{pmatrix} 1 \\ 1 \end{pmatrix} = 9\text{ €} \quad \longrightarrow \quad e_A = 10 - 9 = +1\text{ €}$$
+$$\hat{y}_A = \begin{pmatrix} 6.5 \\ 2.5 \end{pmatrix} \cdot \begin{pmatrix} 1 \\ 1 \end{pmatrix} = 9\text{ €} \quad \longrightarrow \quad e_A = 10 - 9 = +1\text{ €}$$
 
-- **Cas B:**
+**Cas B:**
 
-  $$\hat{y}_B = \begin{pmatrix} 6.5 \\ 2.5 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ 0 \end{pmatrix} = 13\text{ €} \quad \longrightarrow \quad e_B = 14 - 13 = +1\text{ €}$$
+$$\hat{y}_B = \begin{pmatrix} 6.5 \\ 2.5 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ 0 \end{pmatrix} = 13\text{ €} \quad \longrightarrow \quad e_B = 14 - 13 = +1\text{ €}$$
 
-- **Cas C:**
+**Cas C:**
 
-  $$\hat{y}_C = \begin{pmatrix} 6.5 \\ 2.5 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ 2 \end{pmatrix} = 13 + 5 = 18\text{ €} \quad \longrightarrow \quad e_C = 18 - 18 = 0\text{ €}$$
+$$\hat{y}_C = \begin{pmatrix} 6.5 \\ 2.5 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ 2 \end{pmatrix} = 13 + 5 = 18\text{ €} \quad \longrightarrow \quad e_C = 18 - 18 = 0\text{ €}$$
 
 ## 5. Taula comparativa de les 4 rondes i conclusions
 
@@ -151,17 +151,17 @@ $$\text{Predicció } (\hat{y}) = w_1 \cdot x_1 + w_2 \cdot x_2 + b$$
 
 Provem d'afegir un terme independent (biaix) per intentar corregir la desviació del model:
 
-- **Cas A:**
+**Cas A:**
 
-  $$\hat{y}_A = \begin{pmatrix} 6 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 1 \\ 1 \end{pmatrix} + 1 = 9\text{ €} \quad \longrightarrow \quad e_A = 10 - 9 = +1\text{ €}$$
+$$\hat{y}_A = \begin{pmatrix} 6 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 1 \\ 1 \end{pmatrix} + 1 = 9\text{ €} \quad \longrightarrow \quad e_A = 10 - 9 = +1\text{ €}$$
 
-- **Cas B:**
+**Cas B:**
 
-  $$\hat{y}_B = \begin{pmatrix} 6 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ 0 \end{pmatrix} + 1 = 13\text{ €} \quad \longrightarrow \quad e_B = 14 - 13 = +1\text{ €}$$
+$$\hat{y}_B = \begin{pmatrix} 6 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ 0 \end{pmatrix} + 1 = 13\text{ €} \quad \longrightarrow \quad e_B = 14 - 13 = +1\text{ €}$$
 
-- **Cas C:**
+**Cas C:**
 
-  $$\hat{y}_C = \begin{pmatrix} 6 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ 2 \end{pmatrix} + 1 = 17\text{ €} \quad \longrightarrow \quad e_C = 18 - 17 = +1\text{ €}$$
+$$\hat{y}_C = \begin{pmatrix} 6 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ 2 \end{pmatrix} + 1 = 17\text{ €} \quad \longrightarrow \quad e_C = 18 - 17 = +1\text{ €}$$
 
 **Observació:** Tots els casos es queden exactament $1\text{ €}$ per sota del preu real. Com que l'error és constant ($+1\text{ €}$) a tots tres casos, només cal pujar el biaix ($b$) en $1\text{ €}$ sense tocar els pesos!
 
@@ -169,17 +169,17 @@ Provem d'afegir un terme independent (biaix) per intentar corregir la desviació
 
 Augmentem el valor del biaix en 1 unitat per compensar la desviació uniforme:
 
-- **Cas A:**
+**Cas A:**
 
-  $$\hat{y}_A = \begin{pmatrix} 6 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 1 \\ 1 \end{pmatrix} + 2 = 10\text{ €} \quad \longrightarrow \quad e_A = 10 - 10 = 0\text{ €}$$
+$$\hat{y}_A = \begin{pmatrix} 6 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 1 \\ 1 \end{pmatrix} + 2 = 10\text{ €} \quad \longrightarrow \quad e_A = 10 - 10 = 0\text{ €}$$
 
-- **Cas B:**
+**Cas B:**
 
-  $$\hat{y}_B = \begin{pmatrix} 6 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ 0 \end{pmatrix} + 2 = 14\text{ €} \quad \longrightarrow \quad e_B = 14 - 14 = 0\text{ €}$$
+$$\hat{y}_B = \begin{pmatrix} 6 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ 0 \end{pmatrix} + 2 = 14\text{ €} \quad \longrightarrow \quad e_B = 14 - 14 = 0\text{ €}$$
 
-- **Cas C:**
+**Cas C:**
 
-  $$\hat{y}_C = \begin{pmatrix} 6 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ 2 \end{pmatrix} + 2 = 18\text{ €} \quad \longrightarrow \quad e_C = 18 - 18 = 0\text{ €}$$
+$$\hat{y}_C = \begin{pmatrix} 6 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ 2 \end{pmatrix} + 2 = 18\text{ €} \quad \longrightarrow \quad e_C = 18 - 18 = 0\text{ €}$$
 
 **Observació:** Error absolut total de $0\text{ €}$ (encert perfecte en tots els casos).
 
@@ -219,13 +219,13 @@ Es modificarien els **pesos** i, per tant, les prediccions variarien.
 
 Ara que tenim el model entrenat, podem utilitzar-lo per fer prediccions. Donant-li els **valors d'entrada** corresponents i fent servir els **pesos del model**, el model faria la predicció del preu:
 
-- **Cas D — Pizza familiar (3 pams i 1 extra):** $\mathbf{x}_D = (3, 1)^T$
+**Cas D — Pizza familiar (3 pams i 1 extra):** $\mathbf{x}_D = (3, 1)^T$
 
-  $$\hat{y}_D = \begin{pmatrix} 6 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 3 \\ 1 \end{pmatrix} + 2 = 6(3) + 2(1) + 2 = \mathbf{22\text{ €}}$$
+$$\hat{y}_D = \begin{pmatrix} 6 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 3 \\ 1 \end{pmatrix} + 2 = 6(3) + 2(1) + 2 = \mathbf{22\text{ €}}$$
 
-- **Cas E — Pizza mitjana (1,5 pams i 3 extres):** $\mathbf{x}_E = (1.5, 3)^T$
+**Cas E — Pizza mitjana (1,5 pams i 3 extres):** $\mathbf{x}_E = (1.5, 3)^T$
 
-  $$\hat{y}_E = \begin{pmatrix} 6 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 1.5 \\ 3 \end{pmatrix} + 2 = 6(1.5) + 2(3) + 2 = \mathbf{17\text{ €}}$$
+$$\hat{y}_E = \begin{pmatrix} 6 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 1.5 \\ 3 \end{pmatrix} + 2 = 6(1.5) + 2(3) + 2 = \mathbf{17\text{ €}}$$
 
 ---
 
